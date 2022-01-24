@@ -32,7 +32,8 @@ create table if not exists playlist(
 	Name_playlist varchar(50) not null unique,
 	age_playlist date not null,
 	id_albumn int not null references albumn(id_albumn),
-	id_playlist serial primary key
+	id_playlist serial primary key,
+	id_track int not null unique
 );
 create table if not exists TrackPlaylist(
 	id_track int references playlist(id_track),
