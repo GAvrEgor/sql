@@ -13,9 +13,14 @@ create table if not exists CategoryArtist(
 	constraint pk primary key (id_artist, id_category)
 );
 create table if not exists albumn(
-	id_albumn serial primary key references artist(id_albumn),
+	id_albumn serial primary key,
 	name_albumn text not null unique,
-	age date not null
+	age integer not null
+);
+create table if not exist artist/albumn(
+	id_artist integer not null references artist(id_artist),
+	id_albumn integer not null references albumn(id_albumn),
+	constraint pk primary key (id_artist, id_albumn)
 );
 create table if not exists track(
 	id_track serial primary key,
@@ -28,5 +33,10 @@ create table if not exists playlist(
 	Name_playlist varchar(50) not null unique,
 	age_playlist date not null,
 	id_albumn int not null references albumn(id_albumn),
-	id_track int not null references track(id_track)
+	id_playlist serial primary key
+);
+create table if not exists track/playlist(
+	id_track int references playlist(id_track),
+	id_playlist int references playlist(id_playlist)
+	constraint pk primary key (id_track, id_playlist)
 );
