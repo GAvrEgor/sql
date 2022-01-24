@@ -5,7 +5,6 @@ create table if not exists category(
 create table if not exists artist(
 	id_artist serial primary key,
 	artist_name varchar(50),
-	id_albumn int not null unique
 );
 create table if not exists CategoryArtist(
 	id_category integer not null  references category(id_category),
